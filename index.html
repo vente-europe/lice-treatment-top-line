@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lice Treatment — EU Markets (12M) — Nitolic Competitive Landscape</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f1f5f9;color:#1e293b;font-size:13px}
+header{background:#0f2942;color:#fff;padding:18px 32px;display:flex;justify-content:space-between;align-items:center}
+header h1{font-size:1.1rem;font-weight:700;letter-spacing:.01em}
+header span{font-size:.75rem;color:#94a3b8}
+.main{max-width:1100px;margin:0 auto;padding:28px 24px}
+.kpi-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px}
+.kpi{background:#fff;border-radius:8px;padding:14px 18px;box-shadow:0 1px 3px rgba(0,0,0,.07)}
+.kpi-v{font-size:1.25rem;font-weight:700;color:#0f2942;line-height:1.2}
+.kpi-l{font-size:.68rem;color:#64748b;margin-top:5px;text-transform:uppercase;letter-spacing:.05em}
+.charts-row{display:grid;grid-template-columns:1.4fr 1fr;gap:18px;margin-bottom:24px}
+.card{background:#fff;border-radius:8px;padding:18px 20px;box-shadow:0 1px 3px rgba(0,0,0,.07)}
+.card h3{font-size:.83rem;font-weight:600;color:#475569;margin-bottom:16px}
+.chart-wrap{position:relative;height:300px}
+table{width:100%;border-collapse:collapse}
+th{background:#f8fafc;text-align:left;padding:8px 10px;font-weight:600;color:#475569;font-size:.75rem;text-transform:uppercase;letter-spacing:.04em;border-bottom:2px solid #e2e8f0}
+td{padding:7px 10px;border-bottom:1px solid #f1f5f9;font-size:.82rem}
+tr:hover td{background:#f8fafc}
+td.num{text-align:right;font-variant-numeric:tabular-nums}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;flex-shrink:0}
+.flag{margin-right:6px}
+.note{font-size:.7rem;color:#64748b;margin-top:18px;padding:10px 13px;background:#f8fafc;border-radius:6px;border-left:2px solid #cbd5e1;line-height:1.6}
+.total-row td{font-weight:700;color:#0f2942;background:#f8fafc;border-top:2px solid #e2e8f0}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Lice Treatment &mdash; EU Markets &nbsp;(Nitolic Competitive Landscape)</h1>
+  <span>12-Month Projection &nbsp;|&nbsp; Data: Last 30 Days (Mar 2026)</span>
+</header>
+
+<div class="main">
+
+  <!-- KPI Row -->
+  <div class="kpi-row">
+    <div class="kpi">
+      <div class="kpi-v">&euro;19.3M</div>
+      <div class="kpi-l">Total 12M Revenue (all markets)</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-v">1,440,456</div>
+      <div class="kpi-l">Total 12M Units Sold</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-v">5 Markets</div>
+      <div class="kpi-l">UK &bull; FR &bull; DE &bull; IT &bull; ES</div>
+    </div>
+  </div>
+
+  <!-- Charts -->
+  <div class="charts-row">
+    <div class="card">
+      <h3>Revenue by Marketplace &mdash; 12M (&euro;)</h3>
+      <div class="chart-wrap"><canvas id="barChart"></canvas></div>
+    </div>
+    <div class="card">
+      <h3>Unit Share by Marketplace &mdash; 12M</h3>
+      <div class="chart-wrap"><canvas id="pieChart"></canvas></div>
+    </div>
+  </div>
+
+  <!-- Units Table -->
+  <div class="card">
+    <h3>Units by Marketplace &mdash; 12M</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Marketplace</th>
+          <th>Currency</th>
+          <th style="text-align:right">30-Day Units</th>
+          <th style="text-align:right">&times;12</th>
+          <th style="text-align:right">12M Units</th>
+          <th style="text-align:right">12M Revenue &euro;</th>
+          <th style="text-align:right">Share</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="dot" style="background:#dc2626"></span>&#x1F1EC;&#x1F1E7; United Kingdom (UK)</td>
+          <td>GBP &rarr; EUR</td>
+          <td class="num">48,722</td>
+          <td class="num">12&times;</td>
+          <td class="num">584,664</td>
+          <td class="num">&euro;7,838,696</td>
+          <td class="num">40.6%</td>
+        </tr>
+        <tr>
+          <td><span class="dot" style="background:#0891b2"></span>&#x1F1EB;&#x1F1F7; France (FR)</td>
+          <td>EUR</td>
+          <td class="num">21,320</td>
+          <td class="num">12&times;</td>
+          <td class="num">255,840</td>
+          <td class="num">&euro;3,468,005</td>
+          <td class="num">17.8%</td>
+        </tr>
+        <tr>
+          <td><span class="dot" style="background:#2563eb"></span>&#x1F1E9;&#x1F1EA; Germany (DE)</td>
+          <td>EUR</td>
+          <td class="num">19,522</td>
+          <td class="num">12&times;</td>
+          <td class="num">234,264</td>
+          <td class="num">&euro;3,375,891</td>
+          <td class="num">16.3%</td>
+        </tr>
+        <tr>
+          <td><span class="dot" style="background:#7c3aed"></span>&#x1F1EE;&#x1F1F9; Italy (IT)</td>
+          <td>EUR</td>
+          <td class="num">15,365</td>
+          <td class="num">12&times;</td>
+          <td class="num">184,380</td>
+          <td class="num">&euro;2,351,023</td>
+          <td class="num">12.8%</td>
+        </tr>
+        <tr>
+          <td><span class="dot" style="background:#d97706"></span>&#x1F1EA;&#x1F1F8; Spain (ES)</td>
+          <td>EUR</td>
+          <td class="num">15,109</td>
+          <td class="num">12&times;</td>
+          <td class="num">181,308</td>
+          <td class="num">&euro;2,240,674</td>
+          <td class="num">12.6%</td>
+        </tr>
+        <tr class="total-row">
+          <td colspan="2"><strong>Total</strong></td>
+          <td class="num">120,038</td>
+          <td class="num">&mdash;</td>
+          <td class="num">1,440,456</td>
+          <td class="num">&euro;19,274,289</td>
+          <td class="num">100%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note">
+    <strong>Data source:</strong> Helium 10 X-Ray extension &mdash; 30-day snapshot exported Mar 2026, per marketplace keyword extraction with duplicates removed by ASIN. &nbsp;&nbsp;
+    <strong>Methodology:</strong> 30-day figures &times; 12 = annual projection. &nbsp;&nbsp;
+    <strong>FX rate (ECB, Mar 2026):</strong> GBP &rarr; EUR 1.195. &nbsp;&nbsp;
+    Revenue figures are category-level (all ASINs in each marketplace file summed).
+  </div>
+
+</div>
+
+<script>
+Chart.register(ChartDataLabels);
+
+const LABELS  = ['UK','FR','DE','IT','ES'];
+const REVENUE = [7838696, 3468005, 3375891, 2351023, 2240674];
+const UNITS   = [584664, 255840, 234264, 184380, 181308];
+const COLORS  = ['#dc2626','#0891b2','#2563eb','#7c3aed','#d97706'];
+
+// Bar chart
+new Chart(document.getElementById('barChart'), {
+  type: 'bar',
+  data: {
+    labels: LABELS,
+    datasets: [{
+      data: REVENUE,
+      backgroundColor: COLORS,
+      borderRadius: 4,
+      borderSkipped: false
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: {
+          font: { size: 11 }, padding: 10, boxWidth: 12, boxHeight: 12,
+          generateLabels: chart => {
+            const total = REVENUE.reduce((a,b)=>a+b,0);
+            return LABELS.map((label, i) => ({
+              text: label + '  ' + (REVENUE[i] / total * 100).toFixed(1) + '%',
+              fillStyle: COLORS[i],
+              strokeStyle: COLORS[i],
+              lineWidth: 0,
+              index: i,
+              hidden: false
+            }));
+          }
+        }
+      },
+      tooltip: {
+        callbacks: {
+          label: ctx => ' \u20AC' + ctx.parsed.y.toLocaleString('en', {maximumFractionDigits: 0})
+        }
+      },
+      datalabels: {
+        anchor: 'end',
+        align: 'end',
+        formatter: v => '\u20AC' + (v >= 1e6 ? (v/1e6).toFixed(1) + 'M' : (v/1e3).toFixed(0) + 'K'),
+        font: { size: 11, weight: '600' },
+        color: '#1e293b'
+      }
+    },
+    layout: { padding: { top: 22 } },
+    scales: {
+      x: { grid: { display: false }, ticks: { font: { size: 12 } } },
+      y: {
+        grid: { color: '#e2e8f0' },
+        ticks: {
+          callback: v => '\u20AC' + (v >= 1e6 ? (v/1e6).toFixed(1) + 'M' : (v/1e3).toFixed(0) + 'K')
+        }
+      }
+    }
+  }
+});
+
+// Doughnut chart
+new Chart(document.getElementById('pieChart'), {
+  type: 'doughnut',
+  data: {
+    labels: LABELS,
+    datasets: [{
+      data: UNITS,
+      backgroundColor: COLORS,
+      borderWidth: 2,
+      borderColor: '#fff'
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    cutout: '52%',
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: {
+          font: { size: 11 }, padding: 10, boxWidth: 12, boxHeight: 12,
+          generateLabels: chart => {
+            const total = UNITS.reduce((a,b)=>a+b,0);
+            return chart.data.labels.map((label, i) => {
+              const val = chart.data.datasets[0].data[i];
+              const pct = (val / total * 100).toFixed(1);
+              const small = i >= 3;
+              return {
+                text: small ? label + '  ' + pct + '%' : label,
+                fillStyle: COLORS[i],
+                strokeStyle: COLORS[i],
+                lineWidth: 0,
+                index: i,
+                hidden: false
+              };
+            });
+          }
+        }
+      },
+      tooltip: {
+        callbacks: {
+          label: ctx => {
+            const pct = (ctx.parsed / UNITS.reduce((a,b)=>a+b,0) * 100).toFixed(1);
+            return ' ' + ctx.parsed.toLocaleString() + ' units (' + pct + '%)';
+          }
+        }
+      },
+      datalabels: {
+        display: (ctx) => ctx.dataIndex < 3,
+        formatter: (v) => {
+          const pct = (v / UNITS.reduce((a,b)=>a+b,0) * 100).toFixed(1);
+          return pct + '%';
+        },
+        color: '#fff',
+        font: { size: 11, weight: '700' }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>
