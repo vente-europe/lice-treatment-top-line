@@ -22,8 +22,8 @@ Nitolic - EU Topline/
 
 ## Data Convention
 
-- **No sales-units files** — use X-Ray 30d data x 12 for annual projection
-- Currency conversion to USD: EUR x 1.085, GBP x 1.295
+- **No sales-units files** — X-Ray is 30D, multiply by 12 for all dashboard output (charts + tables must show 12M)
+- Currency: EUR (base). Convert GBP → EUR x 1.195 (ECB Mar 2026)
 - Each marketplace = one X-Ray CSV in `x-ray/`
 
 ## Tech Stack
@@ -33,9 +33,9 @@ Nitolic - EU Topline/
 
 ## Status
 
-- [ ] X-Ray CSVs loaded into `x-ray/`
-- [ ] Dashboard built
-- [ ] Git repo initialized
+- [x] X-Ray CSVs loaded into `x-ray/` (DE, UK, FR, ES, IT)
+- [x] Dashboard built
+- [x] Git repo initialized
 - [ ] Connected to GitHub remote
 
 ## Self-Update Rule
