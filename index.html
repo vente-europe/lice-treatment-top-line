@@ -95,15 +95,6 @@ td.num{text-align:right;font-variant-numeric:tabular-nums}
           <td class="num">38.0%</td>
         </tr>
         <tr>
-          <td><span class="dot" style="background:#0891b2"></span>&#x1F1EB;&#x1F1F7; France (FR)</td>
-          <td>EUR</td>
-          <td class="num">23,459</td>
-          <td class="num">12&times;</td>
-          <td class="num">281,508</td>
-          <td class="num">&euro;3,986,728</td>
-          <td class="num">16.5%</td>
-        </tr>
-        <tr>
           <td><span class="dot" style="background:#2563eb"></span>&#x1F1E9;&#x1F1EA; Germany (DE)</td>
           <td>EUR</td>
           <td class="num">29,082</td>
@@ -111,6 +102,15 @@ td.num{text-align:right;font-variant-numeric:tabular-nums}
           <td class="num">348,984</td>
           <td class="num">&euro;5,232,046</td>
           <td class="num">22.9%</td>
+        </tr>
+        <tr>
+          <td><span class="dot" style="background:#0891b2"></span>&#x1F1EB;&#x1F1F7; France (FR)</td>
+          <td>EUR</td>
+          <td class="num">23,459</td>
+          <td class="num">12&times;</td>
+          <td class="num">281,508</td>
+          <td class="num">&euro;3,986,728</td>
+          <td class="num">16.5%</td>
         </tr>
         <tr>
           <td><span class="dot" style="background:#7c3aed"></span>&#x1F1EE;&#x1F1F9; Italy (IT)</td>
@@ -154,10 +154,10 @@ td.num{text-align:right;font-variant-numeric:tabular-nums}
 <script>
 Chart.register(ChartDataLabels);
 
-const LABELS  = ['UK','FR','DE','IT','ES'];
-const REVENUE = [8687175, 3986728, 5232046, 2586744, 2373203];
-const UNITS   = [673212, 281508, 348984, 210912, 195264];
-const COLORS  = ['#dc2626','#0891b2','#2563eb','#7c3aed','#d97706'];
+const LABELS  = ['UK','DE','FR','IT','ES'];
+const REVENUE = [8687175, 5232046, 3986728, 2586744, 2373203];
+const UNITS   = [673212, 348984, 281508, 210912, 195264];
+const COLORS  = ['#dc2626','#2563eb','#0891b2','#7c3aed','#d97706'];
 
 // Bar chart
 new Chart(document.getElementById('barChart'), {
