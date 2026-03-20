@@ -30,6 +30,41 @@ td.num{text-align:right;font-variant-numeric:tabular-nums}
 .flag{margin-right:6px}
 .note{font-size:.7rem;color:#64748b;margin-top:18px;padding:10px 13px;background:#f8fafc;border-radius:6px;border-left:2px solid #cbd5e1;line-height:1.6}
 .total-row td{font-weight:700;color:#0f2942;background:#f8fafc;border-top:2px solid #e2e8f0}
+
+/* Tab navigation */
+.tab-nav{background:#fff;border-bottom:2px solid #e2e8f0;display:flex;gap:0;max-width:1100px;margin:0 auto;padding:0 24px}
+.tab-btn{padding:12px 24px;font-size:.82rem;font-weight:600;color:#64748b;cursor:pointer;border:none;background:none;border-bottom:3px solid transparent;transition:all .15s;letter-spacing:.02em}
+.tab-btn:hover{color:#0f2942;background:#f8fafc}
+.tab-btn.active{color:#0f2942;border-bottom-color:#2563eb}
+.tab-content{display:none}
+.tab-content.active{display:block}
+
+/* Market Concentration styles */
+.mc-filters{display:flex;align-items:center;gap:14px;margin-bottom:20px;flex-wrap:wrap}
+.mc-filters select{padding:7px 12px;border:1px solid #cbd5e1;border-radius:6px;font-size:.8rem;color:#1e293b;background:#fff;cursor:pointer}
+.mc-filters select:focus{outline:none;border-color:#2563eb;box-shadow:0 0 0 2px rgba(37,99,235,.15)}
+.mc-filters label{font-size:.72rem;color:#64748b;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.mc-filters .spacer{flex:1}
+.mc-filters .last-updated{font-size:.72rem;color:#94a3b8}
+.mc-summary-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px}
+.mc-summary{background:#fff;border-radius:8px;padding:14px 18px;box-shadow:0 1px 3px rgba(0,0,0,.07);text-align:center}
+.mc-summary .mc-val{font-size:1.4rem;font-weight:700;color:#0f2942}
+.mc-summary .mc-lbl{font-size:.68rem;color:#64748b;margin-top:4px;text-transform:uppercase;letter-spacing:.04em}
+.mc-doughnuts{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:24px}
+.mc-doughnut-card{background:#fff;border-radius:8px;padding:18px 16px;box-shadow:0 1px 3px rgba(0,0,0,.07)}
+.mc-doughnut-card h3{font-size:.78rem;font-weight:600;color:#475569;margin-bottom:10px;text-align:center}
+.mc-doughnut-wrap{position:relative;height:220px}
+.mc-legend{margin-top:10px;display:flex;flex-wrap:wrap;gap:4px 12px;justify-content:center}
+.mc-legend-item{display:flex;align-items:center;font-size:.7rem;color:#475569}
+.mc-legend-dot{width:8px;height:8px;border-radius:50%;margin-right:5px;flex-shrink:0}
+.mc-hhi-card{background:#fff;border-radius:8px;padding:18px 20px;box-shadow:0 1px 3px rgba(0,0,0,.07);margin-bottom:24px}
+.mc-hhi-card h3{font-size:.78rem;font-weight:600;color:#475569;margin-bottom:10px}
+.mc-hhi-wrap{position:relative;height:60px}
+.mc-hhi-label{font-size:.75rem;color:#475569;margin-top:8px;text-align:center}
+.mc-table-card{background:#fff;border-radius:8px;padding:18px 20px;box-shadow:0 1px 3px rgba(0,0,0,.07)}
+.mc-table-card h3{font-size:.83rem;font-weight:600;color:#475569;margin-bottom:16px}
+.mc-table-card table th{white-space:nowrap}
+.mc-table-card table td{font-size:.78rem}
 </style>
 </head>
 <body>
@@ -39,21 +74,31 @@ td.num{text-align:right;font-variant-numeric:tabular-nums}
   <span>12-Month Projection &nbsp;|&nbsp; Data: Last 30 Days (Mar 2026)</span>
 </header>
 
+<!-- Tab Navigation -->
+<div class="tab-nav">
+  <button class="tab-btn active" data-tab="overview">Overview</button>
+  <button class="tab-btn" data-tab="concentration">Market Concentration</button>
+</div>
+
 <div class="main">
+
+  <!-- TAB 1: Overview (existing content, untouched) -->
+  <div class="tab-content active" id="tab-overview">
 
   <!-- KPI Row -->
   <div class="kpi-row">
     <div class="kpi">
-      <div class="kpi-v">&euro;22.9M</div>
+      <div class="kpi-v">&euro;20.5M</div>
       <div class="kpi-l">Total 12M Revenue (all markets)</div>
     </div>
     <div class="kpi">
-      <div class="kpi-v">1,709,880</div>
+      <div class="kpi-v">1,589,976</div>
       <div class="kpi-l">Total 12M Units Sold</div>
     </div>
     <div class="kpi">
       <div class="kpi-v">5 Markets</div>
       <div class="kpi-l">UK &bull; FR &bull; DE &bull; IT &bull; ES</div>
+
     </div>
   </div>
 
@@ -88,38 +133,38 @@ td.num{text-align:right;font-variant-numeric:tabular-nums}
         <tr>
           <td><span class="dot" style="background:#dc2626"></span>&#x1F1EC;&#x1F1E7; United Kingdom (UK)</td>
           <td>GBP &rarr; EUR</td>
-          <td class="num">56,101</td>
+          <td class="num">55,995</td>
           <td class="num">12&times;</td>
-          <td class="num">673,212</td>
-          <td class="num">&euro;8,687,175</td>
-          <td class="num">38.0%</td>
-        </tr>
-        <tr>
-          <td><span class="dot" style="background:#2563eb"></span>&#x1F1E9;&#x1F1EA; Germany (DE)</td>
-          <td>EUR</td>
-          <td class="num">29,082</td>
-          <td class="num">12&times;</td>
-          <td class="num">348,984</td>
-          <td class="num">&euro;5,232,046</td>
-          <td class="num">22.9%</td>
+          <td class="num">671,940</td>
+          <td class="num">&euro;8,046,209</td>
+          <td class="num">39.5%</td>
         </tr>
         <tr>
           <td><span class="dot" style="background:#0891b2"></span>&#x1F1EB;&#x1F1F7; France (FR)</td>
           <td>EUR</td>
-          <td class="num">23,459</td>
+          <td class="num">23,455</td>
           <td class="num">12&times;</td>
-          <td class="num">281,508</td>
-          <td class="num">&euro;3,986,728</td>
-          <td class="num">16.5%</td>
+          <td class="num">281,460</td>
+          <td class="num">&euro;3,866,395</td>
+          <td class="num">18.7%</td>
+        </tr>
+        <tr>
+          <td><span class="dot" style="background:#2563eb"></span>&#x1F1E9;&#x1F1EA; Germany (DE)</td>
+          <td>EUR</td>
+          <td class="num">20,595</td>
+          <td class="num">12&times;</td>
+          <td class="num">247,140</td>
+          <td class="num">&euro;3,678,959</td>
+          <td class="num">17.3%</td>
         </tr>
         <tr>
           <td><span class="dot" style="background:#7c3aed"></span>&#x1F1EE;&#x1F1F9; Italy (IT)</td>
           <td>EUR</td>
-          <td class="num">17,576</td>
+          <td class="num">16,181</td>
           <td class="num">12&times;</td>
-          <td class="num">210,912</td>
-          <td class="num">&euro;2,586,744</td>
-          <td class="num">11.3%</td>
+          <td class="num">194,172</td>
+          <td class="num">&euro;2,500,600</td>
+          <td class="num">11.8%</td>
         </tr>
         <tr>
           <td><span class="dot" style="background:#d97706"></span>&#x1F1EA;&#x1F1F8; Spain (ES)</td>
@@ -128,14 +173,14 @@ td.num{text-align:right;font-variant-numeric:tabular-nums}
           <td class="num">12&times;</td>
           <td class="num">195,264</td>
           <td class="num">&euro;2,373,203</td>
-          <td class="num">10.4%</td>
+          <td class="num">11.1%</td>
         </tr>
         <tr class="total-row">
           <td colspan="2"><strong>Total</strong></td>
-          <td class="num">142,490</td>
+          <td class="num">132,498</td>
           <td class="num">&mdash;</td>
-          <td class="num">1,709,880</td>
-          <td class="num">&euro;22,865,896</td>
+          <td class="num">1,589,976</td>
+          <td class="num">&euro;20,465,366</td>
           <td class="num">100%</td>
         </tr>
       </tbody>
@@ -149,15 +194,116 @@ td.num{text-align:right;font-variant-numeric:tabular-nums}
     Revenue figures are category-level (all ASINs in each marketplace file summed).
   </div>
 
+  </div><!-- /tab-overview -->
+
+  <!-- TAB 2: Market Concentration -->
+  <div class="tab-content" id="tab-concentration">
+
+    <!-- Filters -->
+    <div class="mc-filters">
+      <div>
+        <label>Marketplace</label><br>
+        <select id="mcMarketplace">
+          <option value="DE">DE</option>
+          <option value="FR">FR</option>
+          <option value="IT">IT</option>
+          <option value="ES">ES</option>
+          <option value="UK">UK</option>
+        </select>
+      </div>
+      <div>
+        <label>Segment</label><br>
+        <select id="mcSegment">
+          <option value="Treatment">Treatment</option>
+          <option value="Prevention">Prevention</option>
+        </select>
+      </div>
+      <div class="spacer"></div>
+      <div class="last-updated">Last updated: <span id="mcLastUpdated"></span></div>
+    </div>
+
+    <!-- Summary Cards -->
+    <div class="mc-summary-row">
+      <div class="mc-summary"><div class="mc-val" id="mcTop3Pct">—</div><div class="mc-lbl">Top 3 Share %</div></div>
+      <div class="mc-summary"><div class="mc-val" id="mcTop5Pct">—</div><div class="mc-lbl">Top 5 Share %</div></div>
+      <div class="mc-summary"><div class="mc-val" id="mcTop10Pct">—</div><div class="mc-lbl">Top 10 Share %</div></div>
+    </div>
+
+    <!-- Doughnut Charts -->
+    <div class="mc-doughnuts">
+      <div class="mc-doughnut-card">
+        <h3>Top 3 ASINs by Revenue (12M)</h3>
+        <div class="mc-doughnut-wrap"><canvas id="mcDoughnut3"></canvas></div>
+        <div class="mc-legend" id="mcLegend3"></div>
+      </div>
+      <div class="mc-doughnut-card">
+        <h3>Top 5 ASINs by Revenue (12M)</h3>
+        <div class="mc-doughnut-wrap"><canvas id="mcDoughnut5"></canvas></div>
+        <div class="mc-legend" id="mcLegend5"></div>
+      </div>
+      <div class="mc-doughnut-card">
+        <h3>Top 10 ASINs by Revenue (12M)</h3>
+        <div class="mc-doughnut-wrap"><canvas id="mcDoughnut10"></canvas></div>
+        <div class="mc-legend" id="mcLegend10"></div>
+      </div>
+    </div>
+
+    <!-- HHI Bar -->
+    <div class="mc-hhi-card">
+      <h3>Herfindahl-Hirschman Index (HHI)</h3>
+      <div class="mc-hhi-wrap"><canvas id="mcHHI"></canvas></div>
+      <div class="mc-hhi-label" id="mcHHILabel"></div>
+    </div>
+
+    <!-- ASIN Ranking Table -->
+    <div class="mc-table-card">
+      <h3>ASIN Ranking by Revenue (12M)</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>ASIN</th>
+            <th>Brand</th>
+            <th>Type</th>
+            <th style="text-align:right">Price</th>
+            <th style="text-align:right">Revenue (12M)</th>
+            <th style="text-align:right">Sales (12M)</th>
+            <th style="text-align:right">Share %</th>
+            <th style="text-align:right">Cum. %</th>
+          </tr>
+        </thead>
+        <tbody id="mcTableBody"></tbody>
+      </table>
+    </div>
+
+    <div class="note" style="margin-top:18px">
+      <strong>Data source:</strong> Helium 10 X-Ray extension &mdash; 30-day snapshot exported Mar 2026. &nbsp;&nbsp;
+      <strong>Methodology:</strong> 30-day figures &times; 12 = annual projection. Revenue &amp; sales shown as 12M. &nbsp;&nbsp;
+      <strong>HHI:</strong> Sum of squared market shares (%). &lt;1500 = competitive, 1500-2500 = moderate, &gt;2500 = concentrated.
+    </div>
+
+  </div><!-- /tab-concentration -->
+
 </div>
 
 <script>
 Chart.register(ChartDataLabels);
 
-const LABELS  = ['UK','DE','FR','IT','ES'];
-const REVENUE = [8687175, 5232046, 3986728, 2586744, 2373203];
-const UNITS   = [673212, 348984, 281508, 210912, 195264];
-const COLORS  = ['#dc2626','#2563eb','#0891b2','#7c3aed','#d97706'];
+/* ===== TAB SWITCHING ===== */
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+  });
+});
+
+/* ===== TAB 1: Overview charts (unchanged) ===== */
+const LABELS  = ['UK','FR','DE','IT','ES'];
+const REVENUE = [8046209, 3866395, 3678959, 2500600, 2373203];
+const UNITS   = [671940, 281460, 247140, 194172, 195264];
+const COLORS  = ['#dc2626','#0891b2','#2563eb','#7c3aed','#d97706'];
 
 // Bar chart
 new Chart(document.getElementById('barChart'), {
@@ -277,6 +423,540 @@ new Chart(document.getElementById('pieChart'), {
     }
   }
 });
+
+/* ===== TAB 2: Market Concentration ===== */
+
+const CONCENTRATION_COLORS = ['#534AB7','#1D9E75','#D85A30','#D4537E','#378ADD','#639922','#BA7517','#E24B4A','#888780','#3C3489'];
+const REST_COLOR = '#D3D1C7';
+
+const DATA_MARKET_CONCENTRATION = {
+  lastUpdated: "2026-03-20",
+  products: [
+    {"marketplace":"DE","segment":"Prevention","asin":"B07YYK4XT5","brand":"SHD Handels GmbH","type":"Prevention accessory","price":12.95,"asinSales":973,"asinRevenue":12594.24},
+    {"marketplace":"DE","segment":"Prevention","asin":"B0CVQP8GTW","brand":"naturetrend","type":"Environmental spray","price":15.9,"asinSales":699,"asinRevenue":11114.18},
+    {"marketplace":"DE","segment":"Prevention","asin":"B07GDHNBMR","brand":"Thader Th Pharma","type":"Prevention shampoo","price":8.23,"asinSales":730,"asinRevenue":5782.38},
+    {"marketplace":"DE","segment":"Prevention","asin":"B00S6I29MU","brand":"mosquito","type":"Prevention spray","price":13.86,"asinSales":372,"asinRevenue":5303.87},
+    {"marketplace":"DE","segment":"Prevention","asin":"B0DP32SVNQ","brand":"Patronus","type":"Environmental spray","price":18.95,"asinSales":253,"asinRevenue":4399.03},
+    {"marketplace":"DE","segment":"Prevention","asin":"B07QDNBKV4","brand":"OTC Antipiojos","type":"Prevention spray","price":10.45,"asinSales":389,"asinRevenue":4066.0},
+    {"marketplace":"DE","segment":"Prevention","asin":"B07BMBKN86","brand":"Thader Th Pharma","type":"Prevention spray","price":11.35,"asinSales":222,"asinRevenue":2571.37},
+    {"marketplace":"DE","segment":"Prevention","asin":"B073VNY7Y1","brand":"Kraeutermax.","type":"Prevention shampoo","price":19.9,"asinSales":129,"asinRevenue":2478.8},
+    {"marketplace":"DE","segment":"Prevention","asin":"B0FGWS9XMY","brand":"KRAFTKOENIG","type":"Environmental spray","price":19.99,"asinSales":97,"asinRevenue":1931.74},
+    {"marketplace":"DE","segment":"Prevention","asin":"B08P5QRN33","brand":"Silberkraft","type":"Environmental spray","price":21.99,"asinSales":82,"asinRevenue":1806.82},
+    {"marketplace":"DE","segment":"Prevention","asin":"B00FOSNOF6","brand":"Puressentiel","type":"Prevention shampoo","price":14.9,"asinSales":129,"asinRevenue":1782.38},
+    {"marketplace":"DE","segment":"Prevention","asin":"B0FMXFPYK1","brand":"Ourdort","type":"Hair Accessories","price":10.99,"asinSales":124,"asinRevenue":1359.19},
+    {"marketplace":"DE","segment":"Prevention","asin":"B0854M5K8P","brand":"Hedrin","type":"Prevention spray","price":10.4,"asinSales":105,"asinRevenue":1095.43},
+    {"marketplace":"DE","segment":"Prevention","asin":"B07NVD3QZS","brand":"Silberkraft","type":"Prevention spray","price":14.99,"asinSales":65,"asinRevenue":974.56},
+    {"marketplace":"DE","segment":"Prevention","asin":"B0DT4P7T7Z","brand":"HomeBugProtect","type":"Environmental spray","price":18.9,"asinSales":51,"asinRevenue":970.36},
+    {"marketplace":"DE","segment":"Prevention","asin":"B0070X37DW","brand":"Puressentiel","type":"Prevention spray","price":11.92,"asinSales":70,"asinRevenue":912.3},
+    {"marketplace":"DE","segment":"Prevention","asin":"B0FLF17FKT","brand":"Air Creative","type":"Prevention spray with comb","price":16.5,"asinSales":48,"asinRevenue":787.55},
+    {"marketplace":"DE","segment":"Prevention","asin":"B0DPB9G9L4","brand":"VIROXIDIN","type":"Environmental spray","price":12.99,"asinSales":51,"asinRevenue":656.73},
+    {"marketplace":"DE","segment":"Prevention","asin":"B01M7V73CK","brand":"Helan","type":"Prevention spray","price":12.5,"asinSales":48,"asinRevenue":600.4},
+    {"marketplace":"DE","segment":"Prevention","asin":"B0FV98JTBQ","brand":"KRAFTKOENIG","type":"Environmental spray","price":50.99,"asinSales":9,"asinRevenue":480.69},
+    {"marketplace":"DE","segment":"Prevention","asin":"B06WWNMSQW","brand":"OTC Antipiojos","type":"Prevention spray","price":10.45,"asinSales":45,"asinRevenue":474.78},
+    {"marketplace":"DE","segment":"Prevention","asin":"B0G3KX4QN1","brand":"Patronus","type":"Environmental spray","price":34.95,"asinSales":14,"asinRevenue":443.51},
+    {"marketplace":"DE","segment":"Prevention","asin":"B08439K45T","brand":"Kraeutermax.","type":"Prevention shampoo","price":53.73,"asinSales":7,"asinRevenue":390.82},
+    {"marketplace":"DE","segment":"Prevention","asin":"B0FLF336RQ","brand":"Air Creative","type":"Prevention spray","price":44.0,"asinSales":4,"asinRevenue":176.01},
+    {"marketplace":"DE","segment":"Prevention","asin":"B0FLF1HPLC","brand":"Air Creative","type":"Prevention spray","price":30.5,"asinSales":6,"asinRevenue":173.72},
+    {"marketplace":"DE","segment":"Prevention","asin":"B0GL2PNFPJ","brand":"Ourdort","type":"Hair Accessories","price":12.99,"asinSales":0,"asinRevenue":0.0},
+    {"marketplace":"DE","segment":"Treatment","asin":"B0C5JMZDH3","brand":"Evolsin","type":"Treatment shampoo with comb","price":16.9,"asinSales":2597,"asinRevenue":43869.54},
+    {"marketplace":"DE","segment":"Treatment","asin":"B084CN25JG","brand":"NitWits","type":"Treatment spray with comb","price":15.0,"asinSales":2645,"asinRevenue":39671.94},
+    {"marketplace":"DE","segment":"Treatment","asin":"B07KWPKKWZ","brand":"Nitnot","type":"Treatment lotion","price":21.99,"asinSales":858,"asinRevenue":18850.75},
+    {"marketplace":"DE","segment":"Treatment","asin":"B00E6EJJ9O","brand":"Linicin","type":"Treatment lotion with comb","price":13.69,"asinSales":1089,"asinRevenue":14788.58},
+    {"marketplace":"DE","segment":"Treatment","asin":"B07Q4BP5TJ","brand":"Licener","type":"Treatment shampoo","price":27.3,"asinSales":474,"asinRevenue":12984.51},
+    {"marketplace":"DE","segment":"Treatment","asin":"B00GJ11LCU","brand":"SOS","type":"Treatment shampoo","price":7.45,"asinSales":1410,"asinRevenue":10486.63},
+    {"marketplace":"DE","segment":"Treatment","asin":"B07F79W116","brand":"Linicin","type":"Treatment lotion with comb","price":13.69,"asinSales":735,"asinRevenue":9979.12},
+    {"marketplace":"DE","segment":"Treatment","asin":"B06XFWX5K3","brand":"Lausinator","type":"Lice comb","price":9.9,"asinSales":961,"asinRevenue":9502.78},
+    {"marketplace":"DE","segment":"Treatment","asin":"B06XH8FKM9","brand":"NYDA","type":"Treatment spray","price":17.02,"asinSales":523,"asinRevenue":9269.32},
+    {"marketplace":"DE","segment":"Treatment","asin":"B07KX1BF3J","brand":"Nitnot","type":"Lice comb","price":17.99,"asinSales":405,"asinRevenue":7281.72},
+    {"marketplace":"DE","segment":"Treatment","asin":"B0DQV6Y19T","brand":"Health Press","type":"Treatment shampoo with comb","price":15.99,"asinSales":480,"asinRevenue":7071.15},
+    {"marketplace":"DE","segment":"Treatment","asin":"B0FQV95CL6","brand":"Evolsin","type":"Treatment kit/set","price":29.95,"asinSales":227,"asinRevenue":6806.82},
+    {"marketplace":"DE","segment":"Treatment","asin":"B00NOQIN0G","brand":"mosquito","type":"Treatment shampoo","price":22.12,"asinSales":285,"asinRevenue":6574.62},
+    {"marketplace":"DE","segment":"Treatment","asin":"B08G8VC1G2","brand":"NYDA","type":"Treatment spray","price":17.26,"asinSales":329,"asinRevenue":5681.07},
+    {"marketplace":"DE","segment":"Treatment","asin":"B0CLT2VJVG","brand":"ZELHYEUU","type":"Lice comb","price":4.99,"asinSales":1043,"asinRevenue":5194.88},
+    {"marketplace":"DE","segment":"Treatment","asin":"B0D6BGGLK2","brand":"SOS","type":"Treatment shampoo","price":29.99,"asinSales":122,"asinRevenue":4873.22},
+    {"marketplace":"DE","segment":"Treatment","asin":"B072FRVYM3","brand":"Essenciales","type":"Treatment spray with comb","price":9.95,"asinSales":395,"asinRevenue":3929.93},
+    {"marketplace":"DE","segment":"Treatment","asin":"B0DW4CW36Z","brand":"HoofdZorg Kliniek","type":"Treatment shampoo with comb","price":29.5,"asinSales":77,"asinRevenue":2264.21},
+    {"marketplace":"DE","segment":"Treatment","asin":"B082VW819C","brand":"NYDA","type":"Treatment spray and comb","price":25.49,"asinSales":86,"asinRevenue":2174.59},
+    {"marketplace":"DE","segment":"Treatment","asin":"B00I3T4EL6","brand":"Hennig Arzneimittel","type":"Treatment lotion","price":21.79,"asinSales":100,"asinRevenue":2105.19},
+    {"marketplace":"DE","segment":"Treatment","asin":"B0DGQFPDZ4","brand":"PHARMA PERLE","type":"Treatment spray with comb","price":49.9,"asinSales":41,"asinRevenue":2040.25},
+    {"marketplace":"DE","segment":"Treatment","asin":"B07DKZZ3ML","brand":"NYDA","type":"Treatment spray with comb","price":25.32,"asinSales":77,"asinRevenue":1972.62},
+    {"marketplace":"DE","segment":"Treatment","asin":"B0DGQGQ1D7","brand":"PHARMA PERLE","type":"Treatment spray with comb","price":37.9,"asinSales":42,"asinRevenue":1592.64},
+    {"marketplace":"DE","segment":"Treatment","asin":"B00E4ZVYI4","brand":"Jacutin","type":"Treatment lotion with comb","price":24.67,"asinSales":63,"asinRevenue":1520.86},
+    {"marketplace":"DE","segment":"Treatment","asin":"B0BZDM23JR","brand":"Australian Bodycare","type":"Treatment kit/set","price":39.99,"asinSales":32,"asinRevenue":1298.04},
+    {"marketplace":"DE","segment":"Treatment","asin":"B0CLYG2T23","brand":"Encuryna","type":"Lice comb","price":3.99,"asinSales":254,"asinRevenue":1154.18},
+    {"marketplace":"DE","segment":"Treatment","asin":"B07HK9WCVF","brand":"Lausinator","type":"Lice comb","price":12.9,"asinSales":89,"asinRevenue":1149.82},
+    {"marketplace":"DE","segment":"Treatment","asin":"B00PKI31YE","brand":"WEPA Apothekenbedarf GmbH & Co K","type":"Treatment shampoo","price":13.41,"asinSales":68,"asinRevenue":904.06},
+    {"marketplace":"DE","segment":"Treatment","asin":"B0CH81KJVZ","brand":"Nitolic","type":"Treatment spray with comb","price":14.65,"asinSales":60,"asinRevenue":881.06},
+    {"marketplace":"DE","segment":"Treatment","asin":"B07MPZ5L2B","brand":"Australian Bodycare","type":"Treatment lotion","price":16.99,"asinSales":48,"asinRevenue":817.62},
+    {"marketplace":"DE","segment":"Treatment","asin":"B004A6R9W2","brand":"Paedia","type":"Treatment lotion","price":23.29,"asinSales":35,"asinRevenue":800.83},
+    {"marketplace":"DE","segment":"Treatment","asin":"B0070X35E8","brand":"Puressentiel","type":"Treatment lotion with comb","price":22.08,"asinSales":34,"asinRevenue":739.19},
+    {"marketplace":"DE","segment":"Treatment","asin":"B073VFHLGJ","brand":"Hedrin","type":"Treatment lotion","price":19.89,"asinSales":37,"asinRevenue":728.99},
+    {"marketplace":"DE","segment":"Treatment","asin":"B073VFL7NK","brand":"Hedrin","type":"Treatment spray","price":15.23,"asinSales":44,"asinRevenue":685.48},
+    {"marketplace":"DE","segment":"Treatment","asin":"B0CN3MJDF8","brand":"PHARMA PERLE","type":"Treatment shampoo","price":41.9,"asinSales":13,"asinRevenue":564.6},
+    {"marketplace":"DE","segment":"Treatment","asin":"B0CQCL11MB","brand":"PHARMA PERLE","type":"Treatment shampoo with comb","price":35.9,"asinSales":15,"asinRevenue":548.14},
+    {"marketplace":"DE","segment":"Treatment","asin":"B0CQC5YWMF","brand":"PHARMA PERLE","type":"Treatment shampoo with comb","price":58.9,"asinSales":9,"asinRevenue":530.87},
+    {"marketplace":"DE","segment":"Treatment","asin":"B09WGK5MQ2","brand":"Lausinator","type":"Lice comb","price":19.6,"asinSales":26,"asinRevenue":516.35},
+    {"marketplace":"DE","segment":"Treatment","asin":"B0DGQGQ3SR","brand":"PHARMA PERLE","type":"Treatment spray with comb","price":25.9,"asinSales":19,"asinRevenue":492.12},
+    {"marketplace":"DE","segment":"Treatment","asin":"B01AV0UKXK","brand":"INGRUBAR","type":"Treatment kit/set","price":24.99,"asinSales":18,"asinRevenue":439.14},
+    {"marketplace":"DE","segment":"Treatment","asin":"B0CQCMCRK8","brand":"PHARMA PERLE","type":"Treatment shampoo with comb","price":80.9,"asinSales":4,"asinRevenue":307.94},
+    {"marketplace":"DE","segment":"Treatment","asin":"B0CN3NF2TD","brand":"PHARMA PERLE","type":"Treatment shampoo","price":55.9,"asinSales":4,"asinRevenue":207.66},
+    {"marketplace":"DE","segment":"Treatment","asin":"B0F5HSTJWL","brand":"INGRUBAR","type":"Treatment kit/set","price":0,"asinSales":0,"asinRevenue":0},
+    {"marketplace":"ES","segment":"Prevention","asin":"B01BN0QUUE","brand":"Neositrin","type":"Prevention spray","price":12.73,"asinSales":2860,"asinRevenue":42133.38},
+    {"marketplace":"ES","segment":"Prevention","asin":"B01ADEMJFQ","brand":"Neositrin","type":"Prevention spray","price":12.79,"asinSales":1687,"asinRevenue":21064.43},
+    {"marketplace":"ES","segment":"Prevention","asin":"B07QDNBKV4","brand":"OTC Antipiojos","type":"Prevention spray","price":9.28,"asinSales":792,"asinRevenue":7749.02},
+    {"marketplace":"ES","segment":"Prevention","asin":"B0CBPW3M74","brand":"ANIAN","type":"Prevention conditioner","price":2.99,"asinSales":854,"asinRevenue":2041.01},
+    {"marketplace":"ES","segment":"Prevention","asin":"B0BPCZLPC2","brand":"BACTERISAN","type":"Prevention shampoo","price":5.95,"asinSales":269,"asinRevenue":1595.57},
+    {"marketplace":"ES","segment":"Prevention","asin":"B075KDM9XH","brand":"Tahe","type":"Prevention conditioner","price":12.95,"asinSales":132,"asinRevenue":1577.47},
+    {"marketplace":"ES","segment":"Prevention","asin":"B0FZW1M61S","brand":"Essenciales","type":"Treatment lotion","price":9.95,"asinSales":152,"asinRevenue":1514.0},
+    {"marketplace":"ES","segment":"Prevention","asin":"B086BB8N14","brand":"PRANAROM","type":"Prevention spray","price":11.18,"asinSales":104,"asinRevenue":1389.92},
+    {"marketplace":"ES","segment":"Prevention","asin":"B0F2TDVCBT","brand":"SUAVINEX","type":"Prevention shampoo","price":11.3,"asinSales":89,"asinRevenue":981.77},
+    {"marketplace":"ES","segment":"Prevention","asin":"B06WWNMSQW","brand":"OTC Antipiojos","type":"Prevention spray","price":10.39,"asinSales":91,"asinRevenue":942.71},
+    {"marketplace":"ES","segment":"Prevention","asin":"B07BMBKN86","brand":"Thader Th Pharma","type":"Prevention spray","price":10.95,"asinSales":84,"asinRevenue":920.92},
+    {"marketplace":"ES","segment":"Prevention","asin":"B01LYI6O49","brand":"NATURAL HITS","type":"Prevention conditioner","price":9.9,"asinSales":70,"asinRevenue":695.37},
+    {"marketplace":"ES","segment":"Prevention","asin":"B078K1P3HH","brand":"ANIAN","type":"Prevention shampoo","price":2.55,"asinSales":191,"asinRevenue":489.84},
+    {"marketplace":"ES","segment":"Prevention","asin":"B09L162GC5","brand":"Tahe","type":"Prevention shampoo","price":17.4,"asinSales":23,"asinRevenue":405.39},
+    {"marketplace":"ES","segment":"Treatment","asin":"B00TTWTOJI","brand":"Neositrin","type":"Treatment spray","price":14.98,"asinSales":1643,"asinRevenue":24036.99},
+    {"marketplace":"ES","segment":"Treatment","asin":"B07BBMJFM1","brand":"OTC Antipiojos","type":"Treatment spray","price":15.69,"asinSales":1100,"asinRevenue":15438.8},
+    {"marketplace":"ES","segment":"Treatment","asin":"B07C41N7T1","brand":"ZZ","type":"Treatment kit/set","price":12.29,"asinSales":1176,"asinRevenue":14439.7},
+    {"marketplace":"ES","segment":"Treatment","asin":"B0D33NP6VB","brand":"Nitwits","type":"Treatment spray with comb","price":15.99,"asinSales":744,"asinRevenue":11890.31},
+    {"marketplace":"ES","segment":"Treatment","asin":"B009VZJD8K","brand":"ZZ","type":"Treatment lotion","price":5.95,"asinSales":1626,"asinRevenue":9715.5},
+    {"marketplace":"ES","segment":"Treatment","asin":"B0179QDKFY","brand":"","type":"Treatment lotion","price":21.29,"asinSales":240,"asinRevenue":5136.91},
+    {"marketplace":"ES","segment":"Treatment","asin":"B00KP7PUE4","brand":"Paranix","type":"Treatment shampoo","price":11.9,"asinSales":248,"asinRevenue":4300.22},
+    {"marketplace":"ES","segment":"Treatment","asin":"B00WUOFQOE","brand":"Neositrin","type":"Treatment kit/set","price":27.93,"asinSales":130,"asinRevenue":3037.82},
+    {"marketplace":"ES","segment":"Treatment","asin":"B00J5FYKPW","brand":"Neositrin","type":"Treatment shampoo","price":9.09,"asinSales":334,"asinRevenue":2376.72},
+    {"marketplace":"ES","segment":"Treatment","asin":"B01BMLRSGO","brand":"Full Marks","type":"Treatment kit/set","price":24.28,"asinSales":85,"asinRevenue":2218.15},
+    {"marketplace":"ES","segment":"Treatment","asin":"B0F38MZBBN","brand":"HoofdZorg Kliniek","type":"Treatment lotion and shampoo","price":29.5,"asinSales":73,"asinRevenue":2166.65},
+    {"marketplace":"ES","segment":"Treatment","asin":"B0DJSHZ3BH","brand":"PRANAROM","type":"Treatment lotion","price":15.88,"asinSales":136,"asinRevenue":2162.86},
+    {"marketplace":"ES","segment":"Treatment","asin":"B009M4MI64","brand":"OTC Antipiojos","type":"Treatment kit/set","price":11.89,"asinSales":167,"asinRevenue":2021.44},
+    {"marketplace":"ES","segment":"Treatment","asin":"B06XFWX5K3","brand":"Lausinator","type":"Lice comb","price":9.9,"asinSales":188,"asinRevenue":1861.14},
+    {"marketplace":"ES","segment":"Treatment","asin":"B07SSSBHGR","brand":"Neositrin","type":"Treatment spray","price":33.49,"asinSales":62,"asinRevenue":1833.81},
+    {"marketplace":"ES","segment":"Treatment","asin":"B0CCPBJ6RV","brand":"OTC Antipiojos","type":"Treatment lotion with comb","price":8.94,"asinSales":145,"asinRevenue":1412.3},
+    {"marketplace":"ES","segment":"Treatment","asin":"B07KWPKKWZ","brand":"Nitnot","type":"Treatment lotion","price":24.99,"asinSales":52,"asinRevenue":1306.15},
+    {"marketplace":"ES","segment":"Treatment","asin":"B07B4BC7CK","brand":"Paranix","type":"Treatment lotion with comb","price":18.62,"asinSales":54,"asinRevenue":1012.74},
+    {"marketplace":"ES","segment":"Treatment","asin":"B00WEOHVUW","brand":"Paranix","type":"Lice comb","price":6.95,"asinSales":133,"asinRevenue":924.55},
+    {"marketplace":"ES","segment":"Treatment","asin":"B01ADEP8NQ","brand":"Full Marks","type":"Treatment spray with comb","price":23.95,"asinSales":37,"asinRevenue":880.43},
+    {"marketplace":"ES","segment":"Treatment","asin":"B00J5G2YEA","brand":"Neositrin","type":"Treatment spray","price":18.54,"asinSales":46,"asinRevenue":851.88},
+    {"marketplace":"ES","segment":"Treatment","asin":"B0C5JMZDH3","brand":"Evolsin","type":"Treatment shampoo with comb","price":17.95,"asinSales":47,"asinRevenue":776.72},
+    {"marketplace":"ES","segment":"Treatment","asin":"B00TTWTEIE","brand":"PARAFARMACIA","type":"Treatment lotion and shampoo","price":16.5,"asinSales":42,"asinRevenue":672.37},
+    {"marketplace":"ES","segment":"Treatment","asin":"B0BYNY7CXY","brand":"Full Marks","type":"Treatment lotion with comb","price":49.65,"asinSales":12,"asinRevenue":653.74},
+    {"marketplace":"ES","segment":"Treatment","asin":"B0F7RTL45N","brand":"PRANAROM","type":"Treatment shampoo","price":13.68,"asinSales":35,"asinRevenue":646.67},
+    {"marketplace":"ES","segment":"Treatment","asin":"B0BYNWZC3J","brand":"Full Marks","type":"Treatment kit/set","price":57.67,"asinSales":10,"asinRevenue":613.57},
+    {"marketplace":"ES","segment":"Treatment","asin":"B01KWYVTIA","brand":"Dexin","type":"Treatment lotion","price":13.95,"asinSales":42,"asinRevenue":593.85},
+    {"marketplace":"ES","segment":"Treatment","asin":"B00ITJHPPM","brand":"Full Marks","type":"Treatment lotion","price":19.5,"asinSales":28,"asinRevenue":556.91},
+    {"marketplace":"ES","segment":"Treatment","asin":"B01GL9RUOM","brand":"","type":"Treatment lotion with comb","price":23.95,"asinSales":21,"asinRevenue":490.34},
+    {"marketplace":"ES","segment":"Treatment","asin":"B0F2TCLQSK","brand":"SUAVINEX","type":"Treatment spray","price":27.75,"asinSales":17,"asinRevenue":468.52},
+    {"marketplace":"ES","segment":"Treatment","asin":"B009VZJC0O","brand":"FILVIT","type":"Treatment kit/set","price":17.99,"asinSales":26,"asinRevenue":467.06},
+    {"marketplace":"ES","segment":"Treatment","asin":"B00W3REUFE","brand":"Paranix","type":"Treatment spray with comb","price":14.75,"asinSales":28,"asinRevenue":418.53},
+    {"marketplace":"ES","segment":"Treatment","asin":"B0BYP2H5WR","brand":"Full Marks","type":"Treatment kit/set","price":73.87,"asinSales":5,"asinRevenue":401.74},
+    {"marketplace":"ES","segment":"Treatment","asin":"B0CCPDR348","brand":"OTC Antipiojos","type":"Treatment lotion with comb","price":7.19,"asinSales":45,"asinRevenue":327.18},
+    {"marketplace":"ES","segment":"Treatment","asin":"B009M4MC2E","brand":"OTC Antipiojos","type":"Treatment shampoo","price":9.09,"asinSales":34,"asinRevenue":317.68},
+    {"marketplace":"ES","segment":"Treatment","asin":"B08YPXJ8LC","brand":"BACTERISAN","type":"Treatment kit/set","price":8.95,"asinSales":30,"asinRevenue":272.32},
+    {"marketplace":"ES","segment":"Treatment","asin":"B0BYP4J9VD","brand":"Full Marks","type":"Treatment spray with comb","price":65.77,"asinSales":4,"asinRevenue":271.23},
+    {"marketplace":"ES","segment":"Treatment","asin":"B0F2TF5QN9","brand":"SUAVINEX","type":"Treatment spray with comb","price":16.41,"asinSales":15,"asinRevenue":254.79},
+    {"marketplace":"ES","segment":"Treatment","asin":"B0BYP4T4PN","brand":"Full Marks","type":"Treatment lotion with comb","price":63.75,"asinSales":2,"asinRevenue":128.54},
+    {"marketplace":"ES","segment":"Treatment","asin":"B00WIBJA78","brand":"Full Marks","type":"Treatment spray","price":10.99,"asinSales":10,"asinRevenue":112.63},
+    {"marketplace":"ES","segment":"Treatment","asin":"B0BYP2RHWH","brand":"Full Marks","type":"Treatment spray","price":27.57,"asinSales":1,"asinRevenue":36.48},
+    {"marketplace":"ES","segment":"Treatment","asin":"B0BYP254JD","brand":"Full Marks","type":"Treatment spray","price":34.93,"asinSales":1,"asinRevenue":22.91},
+    {"marketplace":"ES","segment":"Treatment","asin":"B0CH2P79L8","brand":"ZZ","type":"Treatment lotion","price":12.58,"asinSales":0,"asinRevenue":0.0},
+    {"marketplace":"ES","segment":"Treatment","asin":"B0F5HVTW96","brand":"","type":"Treatment lotion","price":42.58,"asinSales":0,"asinRevenue":0.0},
+    {"marketplace":"ES","segment":"Treatment","asin":"B0DDTMJ3FK","brand":"ZZ","type":"Treatment lotion","price":24.58,"asinSales":0,"asinRevenue":0.0},
+    {"marketplace":"FR","segment":"Prevention","asin":"B002GYIZPA","brand":"Pediakid","type":"Prevention spray","price":12.9,"asinSales":1155,"asinRevenue":14885.38},
+    {"marketplace":"FR","segment":"Prevention","asin":"B01G4WNA6S","brand":"Puressentiel","type":"Prevention spray","price":18.98,"asinSales":797,"asinRevenue":12055.39},
+    {"marketplace":"FR","segment":"Prevention","asin":"B0070X37DW","brand":"Puressentiel","type":"Prevention spray","price":11.25,"asinSales":1382,"asinRevenue":11030.2},
+    {"marketplace":"FR","segment":"Prevention","asin":"B0DQ1M471N","brand":"Panteer","type":"Environmental spray","price":19.97,"asinSales":396,"asinRevenue":7894.31},
+    {"marketplace":"FR","segment":"Prevention","asin":"B00FOSNOF6","brand":"Puressentiel","type":"Prevention shampoo","price":8.56,"asinSales":581,"asinRevenue":5047.95},
+    {"marketplace":"FR","segment":"Prevention","asin":"B0FPGH8B66","brand":"Deparaz","type":"Prevention shampoo","price":12.0,"asinSales":237,"asinRevenue":2847.66},
+    {"marketplace":"FR","segment":"Prevention","asin":"B071DR2SRZ","brand":"Puressentiel","type":"Prevention conditioner","price":7.75,"asinSales":267,"asinRevenue":2388.11},
+    {"marketplace":"FR","segment":"Prevention","asin":"B0B7RMDKPB","brand":"Pediakid","type":"Prevention spray","price":18.52,"asinSales":112,"asinRevenue":2164.5},
+    {"marketplace":"FR","segment":"Prevention","asin":"B0B7RHRNKV","brand":"Pediakid","type":"Prevention spray","price":23.9,"asinSales":71,"asinRevenue":1932.74},
+    {"marketplace":"FR","segment":"Prevention","asin":"B0099L8GIO","brand":"Pouxit","type":"Prevention spray","price":8.78,"asinSales":134,"asinRevenue":1236.6},
+    {"marketplace":"FR","segment":"Prevention","asin":"B0BPCZLPC2","brand":"BACTERISAN","type":"Prevention shampoo","price":6.83,"asinSales":123,"asinRevenue":833.45},
+    {"marketplace":"FR","segment":"Prevention","asin":"B0BPDBZ258","brand":"BACTERISAN","type":"Prevention spray","price":9.37,"asinSales":80,"asinRevenue":733.43},
+    {"marketplace":"FR","segment":"Prevention","asin":"B0BS1PTSLQ","brand":"ARDAP","type":"Environmental spray","price":11.59,"asinSales":5,"asinRevenue":72.74},
+    {"marketplace":"FR","segment":"Treatment","asin":"B09DWJP34Y","brand":"Pouxit","type":"Treatment spray","price":16.75,"asinSales":4395,"asinRevenue":73613.19},
+    {"marketplace":"FR","segment":"Treatment","asin":"B0BTTM9TYX","brand":"Pouxit","type":"Treatment shampoo","price":15.29,"asinSales":1584,"asinRevenue":23646.22},
+    {"marketplace":"FR","segment":"Treatment","asin":"B0D4R67124","brand":"Pouxit","type":"Treatment shampoo","price":11.24,"asinSales":1447,"asinRevenue":16787.74},
+    {"marketplace":"FR","segment":"Treatment","asin":"B07KWPKKWZ","brand":"Nitnot","type":"Treatment lotion","price":24.99,"asinSales":575,"asinRevenue":14354.52},
+    {"marketplace":"FR","segment":"Treatment","asin":"B0724Z2D1J","brand":"Pouxit","type":"Treatment lotion","price":8.79,"asinSales":1425,"asinRevenue":12513.29},
+    {"marketplace":"FR","segment":"Treatment","asin":"B01LT5UZZO","brand":"DUO LP PRO","type":"Treatment lotion with comb","price":15.45,"asinSales":693,"asinRevenue":10700.28},
+    {"marketplace":"FR","segment":"Treatment","asin":"B07KX1BF3J","brand":"Nitnot","type":"Lice comb","price":14.99,"asinSales":634,"asinRevenue":9500.26},
+    {"marketplace":"FR","segment":"Treatment","asin":"B096BL7371","brand":"Pediakid","type":"Treatment spray with comb","price":21.9,"asinSales":411,"asinRevenue":8986.37},
+    {"marketplace":"FR","segment":"Treatment","asin":"B076W33NBM","brand":"Marie Rose","type":"Treatment shampoo","price":4.79,"asinSales":1622,"asinRevenue":7751.76},
+    {"marketplace":"FR","segment":"Treatment","asin":"B0CQ23GTZK","brand":"Paranix","type":"Treatment spray with comb","price":16.4,"asinSales":463,"asinRevenue":7024.83},
+    {"marketplace":"FR","segment":"Treatment","asin":"B0938KWY7K","brand":"Paranix","type":"Treatment shampoo with comb","price":16.99,"asinSales":370,"asinRevenue":6379.64},
+    {"marketplace":"FR","segment":"Treatment","asin":"B07SQG9NVX","brand":"Puressentiel","type":"Treatment shampoo with comb","price":17.11,"asinSales":437,"asinRevenue":6069.03},
+    {"marketplace":"FR","segment":"Treatment","asin":"B0G7KPVKM9","brand":"Deparaz","type":"Treatment shampoo with comb","price":14.9,"asinSales":370,"asinRevenue":5361.15},
+    {"marketplace":"FR","segment":"Treatment","asin":"B0939HK4KR","brand":"Paranix","type":"Treatment shampoo with comb","price":14.97,"asinSales":282,"asinRevenue":4254.89},
+    {"marketplace":"FR","segment":"Treatment","asin":"B0F1D9NJNC","brand":"Paranix","type":"Treatment lotion with comb","price":8.55,"asinSales":417,"asinRevenue":3560.94},
+    {"marketplace":"FR","segment":"Treatment","asin":"B004NISZUW","brand":"DUO LP PRO","type":"Treatment lotion with comb","price":16.05,"asinSales":213,"asinRevenue":3412.81},
+    {"marketplace":"FR","segment":"Treatment","asin":"B0070X35KM","brand":"Puressentiel","type":"Treatment lotion","price":10.99,"asinSales":318,"asinRevenue":3339.44},
+    {"marketplace":"FR","segment":"Treatment","asin":"B007PRSD00","brand":"Pouxit","type":"Treatment spray","price":18.55,"asinSales":209,"asinRevenue":2723.61},
+    {"marketplace":"FR","segment":"Treatment","asin":"B0D14ZG4C3","brand":"Pouxit","type":"Treatment shampoo","price":30.9,"asinSales":80,"asinRevenue":2471.13},
+    {"marketplace":"FR","segment":"Treatment","asin":"B0DW4D7PS9","brand":"HoofdZorg Kliniek","type":"Treatment shampoo with comb","price":29.5,"asinSales":81,"asinRevenue":2376.78},
+    {"marketplace":"FR","segment":"Treatment","asin":"B0DHVWGF6P","brand":"Paranix","type":"Treatment lotion","price":14.93,"asinSales":161,"asinRevenue":2359.08},
+    {"marketplace":"FR","segment":"Treatment","asin":"B0DVZLRLWZ","brand":"Pouxit","type":"Treatment lotion","price":22.15,"asinSales":123,"asinRevenue":2326.44},
+    {"marketplace":"FR","segment":"Treatment","asin":"B0FPGH9WTP","brand":"Deparaz","type":"Treatment lotion with comb","price":28.0,"asinSales":82,"asinRevenue":2293.93},
+    {"marketplace":"FR","segment":"Treatment","asin":"B0CRYXWBLT","brand":"PicSol","type":"Treatment lotion","price":7.95,"asinSales":283,"asinRevenue":2246.67},
+    {"marketplace":"FR","segment":"Treatment","asin":"B0D33LFDZM","brand":"NitWits","type":"Treatment spray with comb","price":15.99,"asinSales":140,"asinRevenue":2239.6},
+    {"marketplace":"FR","segment":"Treatment","asin":"B073ZL3XSW","brand":"Cinq sur Cinq","type":"Treatment kit/set","price":18.19,"asinSales":126,"asinRevenue":2099.75},
+    {"marketplace":"FR","segment":"Treatment","asin":"B0F63GM1CL","brand":"Pouxit","type":"Treatment shampoo","price":11.43,"asinSales":181,"asinRevenue":2031.75},
+    {"marketplace":"FR","segment":"Treatment","asin":"B0B71QJX1B","brand":"Pediakid","type":"Treatment spray with comb","price":34.5,"asinSales":49,"asinRevenue":1838.53},
+    {"marketplace":"FR","segment":"Treatment","asin":"B0D1518DQ6","brand":"Pouxit","type":"Treatment spray","price":32.86,"asinSales":55,"asinRevenue":1806.64},
+    {"marketplace":"FR","segment":"Treatment","asin":"B07XCYP9LG","brand":"Puressentiel","type":"Treatment lotion with comb","price":17.99,"asinSales":77,"asinRevenue":1537.2},
+    {"marketplace":"FR","segment":"Treatment","asin":"B019DTDFNW","brand":"Marie Rose","type":"Treatment shampoo","price":6.04,"asinSales":221,"asinRevenue":1438.89},
+    {"marketplace":"FR","segment":"Treatment","asin":"B07ZNYZYF6","brand":"Deparaz","type":"Treatment lotion with comb","price":19.9,"asinSales":63,"asinRevenue":1245.31},
+    {"marketplace":"FR","segment":"Treatment","asin":"B0037OZGA0","brand":"Pediakid","type":"Treatment shampoo","price":9.02,"asinSales":92,"asinRevenue":1123.39},
+    {"marketplace":"FR","segment":"Treatment","asin":"B0BZDM23JR","brand":"Australian Bodycare","type":"Treatment kit/set","price":34.99,"asinSales":30,"asinRevenue":1035.67},
+    {"marketplace":"FR","segment":"Treatment","asin":"B00F5472MU","brand":"Apaisyl","type":"Treatment lotion with comb","price":23.99,"asinSales":45,"asinRevenue":1007.58},
+    {"marketplace":"FR","segment":"Treatment","asin":"B0B75HYW62","brand":"Pediakid","type":"Treatment spray with comb","price":47.9,"asinSales":18,"asinRevenue":1004.93},
+    {"marketplace":"FR","segment":"Treatment","asin":"B0C8V4CRYY","brand":"Puressentiel","type":"Treatment lotion with comb","price":36.9,"asinSales":21,"asinRevenue":770.37},
+    {"marketplace":"FR","segment":"Treatment","asin":"B0D14ZM49B","brand":"Pouxit","type":"Treatment spray","price":34.2,"asinSales":18,"asinRevenue":627.07},
+    {"marketplace":"FR","segment":"Treatment","asin":"B0070X35E8","brand":"Puressentiel","type":"Treatment lotion with comb","price":12.99,"asinSales":42,"asinRevenue":616.13},
+    {"marketplace":"FR","segment":"Treatment","asin":"B0098XGHI4","brand":"Pouxit","type":"Treatment lotion","price":23.9,"asinSales":24,"asinRevenue":577.2},
+    {"marketplace":"FR","segment":"Treatment","asin":"B0F9FTX9Q4","brand":"Pranarom","type":"Treatment shampoo","price":14.15,"asinSales":41,"asinRevenue":574.79},
+    {"marketplace":"FR","segment":"Treatment","asin":"B0B7RMJGL1","brand":"Pediakid","type":"Treatment shampoo","price":24.5,"asinSales":20,"asinRevenue":518.65},
+    {"marketplace":"FR","segment":"Treatment","asin":"B0DJVZT3LQ","brand":"Pranarom","type":"Treatment lotion with comb","price":15.85,"asinSales":26,"asinRevenue":468.8},
+    {"marketplace":"FR","segment":"Treatment","asin":"B077HRKR6Y","brand":"Puressentiel","type":"Lice comb","price":16.03,"asinSales":25,"asinRevenue":410.7},
+    {"marketplace":"FR","segment":"Treatment","asin":"B0DJBS88ZY","brand":"Pranarom","type":"Treatment lotion with comb","price":15.49,"asinSales":26,"asinRevenue":409.02},
+    {"marketplace":"FR","segment":"Treatment","asin":"B00U34VE80","brand":"Marie Rose","type":"Treatment lotion","price":18.97,"asinSales":24,"asinRevenue":397.45},
+    {"marketplace":"FR","segment":"Treatment","asin":"B004XM3J36","brand":"Pouxit","type":"Treatment lotion","price":8.92,"asinSales":19,"asinRevenue":292.98},
+    {"marketplace":"FR","segment":"Treatment","asin":"B0094HQCGQ","brand":"Apaisyl","type":"Treatment lotion with comb","price":19.0,"asinSales":15,"asinRevenue":258.28},
+    {"marketplace":"FR","segment":"Treatment","asin":"B075QHVVN4","brand":"Pouxit","type":"Treatment shampoo","price":11.99,"asinSales":18,"asinRevenue":230.25},
+    {"marketplace":"FR","segment":"Treatment","asin":"B0B7RLFJ6F","brand":"Pediakid","type":"Treatment shampoo","price":20.5,"asinSales":8,"asinRevenue":179.84},
+    {"marketplace":"FR","segment":"Treatment","asin":"B074PQ41CS","brand":"Marie Rose","type":"Treatment lotion with comb","price":26.32,"asinSales":5,"asinRevenue":142.93},
+    {"marketplace":"FR","segment":"Treatment","asin":"B00EJMJ9FM","brand":"Steripan","type":"Treatment lotion","price":10.15,"asinSales":8,"asinRevenue":77.17},
+    {"marketplace":"FR","segment":"Treatment","asin":"B0CQKG3K8M","brand":"Pouxit","type":"Treatment shampoo","price":23.9,"asinSales":2,"asinRevenue":51.92},
+    {"marketplace":"FR","segment":"Treatment","asin":"B08WQRY4LG","brand":"ARDAP","type":"","price":14.89,"asinSales":1,"asinRevenue":10.36},
+    {"marketplace":"FR","segment":"Treatment","asin":"B0F5HW651Z","brand":"Pouxit","type":"Treatment shampoo","price":22.48,"asinSales":0,"asinRevenue":0.0},
+    {"marketplace":"FR","segment":"Treatment","asin":"B0G52BDM4Q","brand":"DUO LP PRO","type":"Treatment lotion with comb","price":26.5,"asinSales":0,"asinRevenue":0.0},
+    {"marketplace":"FR","segment":"Treatment","asin":"B0DK3WV1WY","brand":"Marie Rose","type":"Treatment shampoo","price":9.58,"asinSales":0,"asinRevenue":0.0},
+    {"marketplace":"FR","segment":"Treatment","asin":"B0F5HXRXMJ","brand":"Paranix","type":"Treatment shampoo with comb","price":33.98,"asinSales":0,"asinRevenue":0.0},
+    {"marketplace":"FR","segment":"Treatment","asin":"B0CPF3S5KJ","brand":"Puressentiel","type":"Treatment lotion","price":21.98,"asinSales":0,"asinRevenue":0.0},
+    {"marketplace":"FR","segment":"Treatment","asin":"B0G51RJPJP","brand":"Paranix","type":"Treatment lotion with comb","price":17.1,"asinSales":0,"asinRevenue":0.0},
+    {"marketplace":"FR","segment":"Treatment","asin":"B0DK3WGCFV","brand":"PicSol","type":"Treatment lotion","price":15.9,"asinSales":0,"asinRevenue":0.0},
+    {"marketplace":"FR","segment":"Treatment","asin":"B0G537MXD5","brand":"Marie Rose","type":"Treatment shampoo","price":13.36,"asinSales":0,"asinRevenue":0.0},
+    {"marketplace":"FR","segment":"Treatment","asin":"B0GDWK6H37","brand":"Pouxit","type":"Treatment lotion","price":15.04,"asinSales":0,"asinRevenue":0.0},
+    {"marketplace":"FR","segment":"Treatment","asin":"B0DDTP3G18","brand":"Steripan","type":"Treatment lotion","price":20.3,"asinSales":0,"asinRevenue":0.0},
+    {"marketplace":"IT","segment":"Prevention","asin":"B01M7V73CK","brand":"Helan","type":"Prevention spray","price":11.59,"asinSales":1518,"asinRevenue":17594.23},
+    {"marketplace":"IT","segment":"Prevention","asin":"B081VVQRM1","brand":"Aftir","type":"Prevention spray","price":11.87,"asinSales":1268,"asinRevenue":14480.31},
+    {"marketplace":"IT","segment":"Prevention","asin":"B00BUH65R4","brand":"Paranix","type":"Prevention spray","price":9.81,"asinSales":1182,"asinRevenue":12250.82},
+    {"marketplace":"IT","segment":"Prevention","asin":"B0DQ1M471N","brand":"Panteer","type":"Environmental spray","price":19.95,"asinSales":589,"asinRevenue":11746.04},
+    {"marketplace":"IT","segment":"Prevention","asin":"B081VVP42W","brand":"Aftir","type":"Prevention shampoo","price":8.85,"asinSales":801,"asinRevenue":7253.26},
+    {"marketplace":"IT","segment":"Prevention","asin":"B00FOSNOF6","brand":"Puressentiel","type":"Prevention shampoo","price":6.96,"asinSales":659,"asinRevenue":4198.65},
+    {"marketplace":"IT","segment":"Prevention","asin":"B081VV1Y9S","brand":"Aftir","type":"Prevention shampoo","price":8.97,"asinSales":276,"asinRevenue":2474.87},
+    {"marketplace":"IT","segment":"Prevention","asin":"B01BI50014","brand":"Linea Act","type":"Prevention spray","price":6.71,"asinSales":247,"asinRevenue":1687.96},
+    {"marketplace":"IT","segment":"Prevention","asin":"B0BPCZLPC2","brand":"BACTERISAN","type":"Prevention shampoo","price":6.83,"asinSales":233,"asinRevenue":1588.98},
+    {"marketplace":"IT","segment":"Prevention","asin":"B079QK13Z8","brand":"Natura House","type":"Prevention shampoo","price":17.49,"asinSales":78,"asinRevenue":1368.08},
+    {"marketplace":"IT","segment":"Prevention","asin":"B0BPDBZ258","brand":"BACTERISAN","type":"Prevention spray","price":9.4,"asinSales":106,"asinRevenue":976.31},
+    {"marketplace":"IT","segment":"Prevention","asin":"B0728HM62S","brand":"HAIRMED haircare innovative","type":"Prevention spray","price":16.01,"asinSales":57,"asinRevenue":946.55},
+    {"marketplace":"IT","segment":"Prevention","asin":"B0714K4ZTX","brand":"HAIRMED haircare innovative","type":"Prevention spray","price":20.0,"asinSales":46,"asinRevenue":912.28},
+    {"marketplace":"IT","segment":"Prevention","asin":"B0F1YNHNSQ","brand":"EG","type":"Prevention spray","price":21.2,"asinSales":33,"asinRevenue":761.47},
+    {"marketplace":"IT","segment":"Prevention","asin":"B07C25DLDT","brand":"CootieEX","type":"Prevention spray","price":12.99,"asinSales":39,"asinRevenue":506.99},
+    {"marketplace":"IT","segment":"Prevention","asin":"B07HP4DNY4","brand":"Natura House","type":"Prevention spray","price":0,"asinSales":21,"asinRevenue":378.84},
+    {"marketplace":"IT","segment":"Prevention","asin":"B01ADEMJFQ","brand":"Neositrin","type":"Prevention spray","price":15.53,"asinSales":21,"asinRevenue":333.37},
+    {"marketplace":"IT","segment":"Prevention","asin":"B0CKZ9588J","brand":"Helan","type":"Prevention spray","price":25.0,"asinSales":5,"asinRevenue":117.9},
+    {"marketplace":"IT","segment":"Treatment","asin":"B0892Q7DB6","brand":"Paranix","type":"Treatment shampoo","price":15.66,"asinSales":2370,"asinRevenue":39335.78},
+    {"marketplace":"IT","segment":"Treatment","asin":"B01BIGUZ04","brand":"Linea Act","type":"Treatment shampoo with comb","price":12.3,"asinSales":832,"asinRevenue":10197.74},
+    {"marketplace":"IT","segment":"Treatment","asin":"B01M9GFPLY","brand":"Helan","type":"Treatment shampoo","price":11.59,"asinSales":773,"asinRevenue":9083.06},
+    {"marketplace":"IT","segment":"Treatment","asin":"B00D3HW2K8","brand":"Paranix","type":"Treatment shampoo with comb","price":18.48,"asinSales":453,"asinRevenue":8255.67},
+    {"marketplace":"IT","segment":"Treatment","asin":"B0DB8R78XK","brand":"Pouxit","type":"Treatment spray with comb","price":7.0,"asinSales":1069,"asinRevenue":7850.39},
+    {"marketplace":"IT","segment":"Treatment","asin":"B015YBUQKI","brand":"Assy","type":"Lice comb","price":21.9,"asinSales":349,"asinRevenue":7636.8},
+    {"marketplace":"IT","segment":"Treatment","asin":"B08152CNM6","brand":"Aftir","type":"Treatment lotion","price":9.74,"asinSales":534,"asinRevenue":5777.86},
+    {"marketplace":"IT","segment":"Treatment","asin":"B07KWPKKWZ","brand":"Nitnot","type":"Treatment lotion","price":21.99,"asinSales":209,"asinRevenue":4592.62},
+    {"marketplace":"IT","segment":"Treatment","asin":"B0C7GZ4D7L","brand":"Pouxit","type":"Treatment shampoo with comb","price":11.59,"asinSales":583,"asinRevenue":4248.67},
+    {"marketplace":"IT","segment":"Treatment","asin":"B077Z7QKN9","brand":"Milice","type":"Treatment shampoo with comb","price":19.0,"asinSales":204,"asinRevenue":3631.12},
+    {"marketplace":"IT","segment":"Treatment","asin":"B00D3HZ6SS","brand":"Paranix","type":"Treatment spray with comb","price":16.4,"asinSales":165,"asinRevenue":2752.23},
+    {"marketplace":"IT","segment":"Treatment","asin":"B0FNDRYL3M","brand":"NitWits","type":"Treatment spray with comb","price":14.99,"asinSales":168,"asinRevenue":2513.71},
+    {"marketplace":"IT","segment":"Treatment","asin":"B0F1YLTMY4","brand":"EG","type":"Treatment lotion","price":24.9,"asinSales":86,"asinRevenue":2120.84},
+    {"marketplace":"IT","segment":"Treatment","asin":"B0892Q9744","brand":"Paranix","type":"Treatment spray","price":17.07,"asinSales":119,"asinRevenue":2090.27},
+    {"marketplace":"IT","segment":"Treatment","asin":"B0F1YNYK8Y","brand":"EG","type":"Treatment spray with comb","price":18.22,"asinSales":88,"asinRevenue":1604.66},
+    {"marketplace":"IT","segment":"Treatment","asin":"B0CLT2VJVG","brand":"ZELHYEUU","type":"Lice comb","price":6.99,"asinSales":199,"asinRevenue":1334.07},
+    {"marketplace":"IT","segment":"Treatment","asin":"B0070X35E8","brand":"Puressentiel","type":"Treatment lotion with comb","price":11.75,"asinSales":106,"asinRevenue":1333.31},
+    {"marketplace":"IT","segment":"Treatment","asin":"B0C5JMZDH3","brand":"Evolsin","type":"Treatment shampoo with comb","price":15.95,"asinSales":82,"asinRevenue":1283.81},
+    {"marketplace":"IT","segment":"Treatment","asin":"B0F1YGXCP1","brand":"EG","type":"Treatment shampoo with comb","price":22.64,"asinSales":49,"asinRevenue":1098.23},
+    {"marketplace":"IT","segment":"Treatment","asin":"B071J2C5Y9","brand":"HAIRMED haircare innovative","type":"Treatment spray","price":18.01,"asinSales":49,"asinRevenue":981.63},
+    {"marketplace":"IT","segment":"Treatment","asin":"B0F224VSB5","brand":"HoofdZorg Kliniek","type":"Treatment shampoo with comb","price":29.5,"asinSales":33,"asinRevenue":970.32},
+    {"marketplace":"IT","segment":"Treatment","asin":"B0CW1RMDSR","brand":"Pouxit","type":"Treatment lotion","price":19.28,"asinSales":44,"asinRevenue":832.75},
+    {"marketplace":"IT","segment":"Treatment","asin":"B07SQG9NVX","brand":"Puressentiel","type":"Treatment shampoo with comb","price":11.75,"asinSales":56,"asinRevenue":806.85},
+    {"marketplace":"IT","segment":"Treatment","asin":"B0FSDSW9XQ","brand":"EG","type":"Treatment + protective spray","price":37.9,"asinSales":17,"asinRevenue":665.94},
+    {"marketplace":"IT","segment":"Treatment","asin":"B07MPZ5L2B","brand":"Australian Bodycare","type":"Treatment lotion","price":16.99,"asinSales":34,"asinRevenue":580.37},
+    {"marketplace":"IT","segment":"Treatment","asin":"B07HP42DTY","brand":"Natura House","type":"Treatment shampoo with comb","price":18.49,"asinSales":28,"asinRevenue":511.18},
+    {"marketplace":"IT","segment":"Treatment","asin":"B07KX1BF3J","brand":"Nitnot","type":"Lice comb","price":19.99,"asinSales":25,"asinRevenue":492.1},
+    {"marketplace":"IT","segment":"Treatment","asin":"B0BZDM23JR","brand":"Australian Bodycare","type":"Treatment kit/set","price":34.99,"asinSales":13,"asinRevenue":468.18},
+    {"marketplace":"IT","segment":"Treatment","asin":"B01ADEMJFQ","brand":"Neositrin","type":"Prevention spray","price":15.53,"asinSales":21,"asinRevenue":333.37},
+    {"marketplace":"IT","segment":"Treatment","asin":"B0CP6193K1","brand":"LICE OUT","type":"Treatment shampoo","price":11.99,"asinSales":16,"asinRevenue":186.87},
+    {"marketplace":"IT","segment":"Treatment","asin":"B0F38M1KL2","brand":"Pouxit","type":"Treatment shampoo","price":14.14,"asinSales":9,"asinRevenue":113.43},
+    {"marketplace":"IT","segment":"Treatment","asin":"B0094HQCGQ","brand":"Apaisyl","type":"Treatment lotion with comb","price":16.29,"asinSales":2,"asinRevenue":26.24},
+    {"marketplace":"IT","segment":"Treatment","asin":"B00F5472MU","brand":"Apaisyl","type":"Treatment lotion with comb","price":26.66,"asinSales":1,"asinRevenue":14.04},
+    {"marketplace":"IT","segment":"Treatment","asin":"B0DZN7BDNF","brand":"Puressentiel","type":"Treatment shampoo","price":20.18,"asinSales":0,"asinRevenue":0},
+    {"marketplace":"IT","segment":"Treatment","asin":"B0GDXGQ3JC","brand":"Aftir","type":"Treatment lotion","price":19.48,"asinSales":0,"asinRevenue":0},
+    {"marketplace":"IT","segment":"Treatment","asin":"B0DZNM8YSQ","brand":"Puressentiel","type":"Treatment shampoo","price":13.92,"asinSales":0,"asinRevenue":0},
+    {"marketplace":"IT","segment":"Treatment","asin":"B0G546461S","brand":"Pouxit","type":"Treatment shampoo with comb","price":20.96,"asinSales":0,"asinRevenue":0},
+    {"marketplace":"UK","segment":"Prevention","asin":"B00E5DMB3C","brand":"Hedrin","type":"Prevention spray","price":8.83,"asinSales":3205,"asinRevenue":24646.11},
+    {"marketplace":"UK","segment":"Prevention","asin":"B0D9YW8VX2","brand":"Vosene","type":"Prevention spray","price":2.3,"asinSales":7825,"asinRevenue":18376.48},
+    {"marketplace":"UK","segment":"Prevention","asin":"B077PT9756","brand":"Vosene","type":"Prevention shampoo","price":2.32,"asinSales":7342,"asinRevenue":14683.24},
+    {"marketplace":"UK","segment":"Prevention","asin":"B019H8HM5G","brand":"Vosene","type":"Prevention spray","price":7.87,"asinSales":1198,"asinRevenue":8032.85},
+    {"marketplace":"UK","segment":"Prevention","asin":"B000O7JK0A","brand":"Fairy Tales","type":"Prevention spray","price":20.44,"asinSales":430,"asinRevenue":7029.37},
+    {"marketplace":"UK","segment":"Prevention","asin":"B000KUALP4","brand":"Nitty Gritty","type":"Prevention spray","price":17.67,"asinSales":542,"asinRevenue":8389.89},
+    {"marketplace":"UK","segment":"Prevention","asin":"B08D9HSPZ7","brand":"Lyclear","type":"Prevention shampoo","price":18.38,"asinSales":525,"asinRevenue":6614.4},
+    {"marketplace":"UK","segment":"Prevention","asin":"B08D9H52Q6","brand":"Lyclear","type":"Treatment lotion","price":11.2,"asinSales":523,"asinRevenue":5095.9},
+    {"marketplace":"UK","segment":"Prevention","asin":"B0F1YYM6XY","brand":"ABL Supplies","type":"Prevention spray","price":11.47,"asinSales":329,"asinRevenue":3288.02},
+    {"marketplace":"UK","segment":"Prevention","asin":"B0CVXX4FLM","brand":"ABL Supplies","type":"Prevention accessory","price":10.33,"asinSales":273,"asinRevenue":2453.79},
+    {"marketplace":"UK","segment":"Prevention","asin":"B073ZFFLVT","brand":"Escenti","type":"Prevention shampoo","price":5.92,"asinSales":398,"asinRevenue":2078.46},
+    {"marketplace":"UK","segment":"Prevention","asin":"B08D9HTG8Z","brand":"Lyclear","type":"Treatment spray","price":13.77,"asinSales":139,"asinRevenue":1747.82},
+    {"marketplace":"UK","segment":"Prevention","asin":"B0DSQ46B78","brand":"BVO Luxe","type":"Prevention kit/set","price":10.33,"asinSales":181,"asinRevenue":1654.83},
+    {"marketplace":"UK","segment":"Prevention","asin":"B0070X37DW","brand":"Puressentiel","type":"Prevention spray","price":26.64,"asinSales":80,"asinRevenue":1559.01},
+    {"marketplace":"UK","segment":"Prevention","asin":"B0FTT7FLP4","brand":"BVO Luxe","type":"Prevention kit/set","price":9.18,"asinSales":154,"asinRevenue":1231.9},
+    {"marketplace":"UK","segment":"Prevention","asin":"B0DFQKFCKG","brand":"BVO Luxe","type":"Prevention kit/set","price":11.47,"asinSales":102,"asinRevenue":1016.06},
+    {"marketplace":"UK","segment":"Prevention","asin":"B008FRJYLG","brand":"Vosene","type":"Prevention shampoo","price":9.49,"asinSales":60,"asinRevenue":493.13},
+    {"marketplace":"UK","segment":"Treatment","asin":"B07KWPKKWZ","brand":"Nitnot","type":"Treatment lotion","price":18.37,"asinSales":6887,"asinRevenue":110051.54},
+    {"marketplace":"UK","segment":"Treatment","asin":"B01J1ZAMTI","brand":"NitWits","type":"Treatment spray with comb","price":18.38,"asinSales":3850,"asinRevenue":94483.09},
+    {"marketplace":"UK","segment":"Treatment","asin":"B0010YNW6E","brand":"Full Marks","type":"Treatment lotion with comb","price":12.63,"asinSales":5794,"asinRevenue":63738.58},
+    {"marketplace":"UK","segment":"Treatment","asin":"B07GS2D72K","brand":"Hedrin","type":"Treatment kit/set","price":10.79,"asinSales":3372,"asinRevenue":33137.71},
+    {"marketplace":"UK","segment":"Treatment","asin":"B07S9KMK19","brand":"Hedrin","type":"Treatment kit/set","price":17.22,"asinSales":1203,"asinRevenue":20478.23},
+    {"marketplace":"UK","segment":"Treatment","asin":"B00M355BG8","brand":"Hedrin","type":"Treatment lotion","price":22.91,"asinSales":987,"asinRevenue":18550.21},
+    {"marketplace":"UK","segment":"Treatment","asin":"B01N5HOH7A","brand":"OWNHEALER","type":"Lice comb","price":11.47,"asinSales":1418,"asinRevenue":14145.34},
+    {"marketplace":"UK","segment":"Treatment","asin":"B0CDVJMJ4D","brand":"Nitrid","type":"Treatment spray with comb","price":11.47,"asinSales":1392,"asinRevenue":13892.03},
+    {"marketplace":"UK","segment":"Treatment","asin":"B010DL29EA","brand":"Hedrin","type":"Treatment spray","price":11.88,"asinSales":1078,"asinRevenue":11973.05},
+    {"marketplace":"UK","segment":"Treatment","asin":"B07KX1BF3J","brand":"Nitnot","type":"Lice comb","price":13.77,"asinSales":972,"asinRevenue":11745.48},
+    {"marketplace":"UK","segment":"Treatment","asin":"B002NY761W","brand":"Full Marks","type":"Treatment spray with comb","price":10.34,"asinSales":1039,"asinRevenue":9714.44},
+    {"marketplace":"UK","segment":"Treatment","asin":"B005NA0KVG","brand":"Hedrin","type":"Treatment lotion","price":14.36,"asinSales":761,"asinRevenue":9513.39},
+    {"marketplace":"UK","segment":"Treatment","asin":"B078PLKQMP","brand":"Lyclear","type":"Treatment shampoo with comb","price":14.87,"asinSales":653,"asinRevenue":6315.29},
+    {"marketplace":"UK","segment":"Treatment","asin":"B09NSSHLZW","brand":"Haveble","type":"Lice comb","price":11.47,"asinSales":553,"asinRevenue":5598.21},
+    {"marketplace":"UK","segment":"Treatment","asin":"B002OE69T6","brand":"Hedrin","type":"Treatment lotion","price":16.47,"asinSales":357,"asinRevenue":5165.09},
+    {"marketplace":"UK","segment":"Treatment","asin":"B005DCCSQY","brand":"LiceGuard","type":"Lice comb","price":34.45,"asinSales":166,"asinRevenue":4987.49},
+    {"marketplace":"UK","segment":"Treatment","asin":"B0FPQ6CYM4","brand":"FREYPAC","type":"Treatment + Prevention kit/set","price":14.69,"asinSales":333,"asinRevenue":4258.51},
+    {"marketplace":"UK","segment":"Treatment","asin":"B07NGY9TSY","brand":"NitWits","type":"Lice comb","price":9.31,"asinSales":513,"asinRevenue":4127.3},
+    {"marketplace":"UK","segment":"Treatment","asin":"B07MPZ5L2B","brand":"Australian Bodycare","type":"Treatment lotion","price":13.77,"asinSales":219,"asinRevenue":2626.08},
+    {"marketplace":"UK","segment":"Treatment","asin":"B0BZDM23JR","brand":"Australian Bodycare","type":"Treatment kit/set","price":34.45,"asinSales":58,"asinRevenue":1741.39},
+    {"marketplace":"UK","segment":"Treatment","asin":"B00STRW9SW","brand":"Medisure","type":"Lice comb","price":3.73,"asinSales":516,"asinRevenue":1654.39},
+    {"marketplace":"UK","segment":"Treatment","asin":"B09872DVZ5","brand":"OBSCYON","type":"Lice comb","price":8.03,"asinSales":192,"asinRevenue":1338.39},
+    {"marketplace":"UK","segment":"Treatment","asin":"B0BKZ5JHJM","brand":"FTONOM5","type":"Lice comb","price":4.35,"asinSales":63,"asinRevenue":237.62},
+    {"marketplace":"UK","segment":"Treatment","asin":"B01IF5XEFE","brand":"Isabella's Clearly","type":"Lice comb","price":22.96,"asinSales":30,"asinRevenue":607.94},
+    {"marketplace":"UK","segment":"Treatment","asin":"B0DGLWQ75G","brand":"Puradoro","type":"Prevention shampoo","price":25.15,"asinSales":6,"asinRevenue":185.95},
+    {"marketplace":"UK","segment":"Treatment","asin":"B00P003AAC","brand":"Mediker","type":"Treatment shampoo","price":5.74,"asinSales":100,"asinRevenue":513.93},
+    {"marketplace":"UK","segment":"Treatment","asin":"B0FGDN3N63","brand":"Zuche","type":"Treatment lotion","price":5.17,"asinSales":34,"asinRevenue":154.16},
+    {"marketplace":"UK","segment":"Treatment","asin":"B0070X35E8","brand":"Puressentiel","type":"Treatment lotion with comb","price":19.56,"asinSales":25,"asinRevenue":448.62},
+    {"marketplace":"UK","segment":"Treatment","asin":"B07L5HLBY1","brand":"Nitty Gritty","type":"Prevention spray","price":32.79,"asinSales":17,"asinRevenue":487.55},
+    {"marketplace":"UK","segment":"Treatment","asin":"B07SKZK1HD","brand":"pengxiaomei","type":"Lice comb","price":5.27,"asinSales":66,"asinRevenue":304.53},
+    {"marketplace":"UK","segment":"Treatment","asin":"B0FRB1LV9P","brand":"Mo's Super","type":"Treatment + Prevention kit/set","price":13.77,"asinSales":15,"asinRevenue":176.24},
+    {"marketplace":"UK","segment":"Treatment","asin":"B0853BCC84","brand":"Australian Bodycare","type":"Prevention lotion ","price":17.36,"asinSales":11,"asinRevenue":171.24},
+    {"marketplace":"UK","segment":"Treatment","asin":"B07PV5Y555","brand":"Isabella's Clearly","type":"Lice comb","price":34.74,"asinSales":3,"asinRevenue":98.0},
+    {"marketplace":"UK","segment":"Treatment","asin":"B0CNZNWD58","brand":"MEDca","type":"Lice comb","price":34.74,"asinSales":1,"asinRevenue":24.04},
+    {"marketplace":"UK","segment":"Treatment","asin":"B07K72LZHW","brand":"MEDca","type":"Lice comb","price":17.36,"asinSales":2,"asinRevenue":24.15},
+    {"marketplace":"UK","segment":"Treatment","asin":"B07BQ5F2RV","brand":"MEDca","type":"Lice comb","price":15.05,"asinSales":3,"asinRevenue":41.98},
+    {"marketplace":"UK","segment":"Treatment","asin":"B0F8BFNJPK","brand":"Full Marks","type":"Treatment lotion with comb","price":25.48,"asinSales":0,"asinRevenue":0},
+    {"marketplace":"UK","segment":"Treatment","asin":"B0F8BG9YN8","brand":"Full Marks","type":"Treatment spray with comb","price":20.85,"asinSales":0,"asinRevenue":0},
+    {"marketplace":"UK","segment":"Treatment","asin":"B0DX8M5M62","brand":"Hedrin","type":"Treatment lotion","price":32.18,"asinSales":0,"asinRevenue":0}
+  ]
+};
+
+/* Chart instance storage for destroy/recreate */
+let mcChartD3 = null, mcChartD5 = null, mcChartD10 = null, mcChartHHI = null;
+
+function getFiltered(mp, seg) {
+  return DATA_MARKET_CONCENTRATION.products
+    .filter(p => p.marketplace === mp && p.segment === seg && p.asinRevenue > 0)
+    .sort((a, b) => b.asinRevenue - a.asinRevenue);
+}
+
+function fmtCurrency(val, mp) {
+  const sym = mp === 'UK' ? '\u00A3' : '\u20AC';
+  if (val >= 1e6) return sym + (val / 1e6).toFixed(1) + 'M';
+  if (val >= 1e3) return sym + (val / 1e3).toFixed(0) + 'k';
+  return sym + val.toFixed(0);
+}
+
+function fmtNum(n) {
+  return n.toLocaleString('en-US');
+}
+
+function buildDoughnut(canvasId, legendId, items, topN, totalRevenue12M, mp) {
+  const top = items.slice(0, topN);
+  const topRev = top.reduce((s, p) => s + p.asinRevenue * 12, 0);
+  const restRev = totalRevenue12M - topRev;
+
+  const labels = top.map(p => p.brand || p.asin);
+  const data = top.map(p => p.asinRevenue * 12);
+  const colors = top.map((_, i) => CONCENTRATION_COLORS[i % CONCENTRATION_COLORS.length]);
+
+  if (restRev > 0) {
+    labels.push('Rest');
+    data.push(restRev);
+    colors.push(REST_COLOR);
+  }
+
+  // Build custom legend
+  const legendEl = document.getElementById(legendId);
+  legendEl.innerHTML = '';
+  labels.forEach((lbl, i) => {
+    const pct = (data[i] / totalRevenue12M * 100).toFixed(1);
+    legendEl.innerHTML += '<div class="mc-legend-item"><span class="mc-legend-dot" style="background:' + colors[i] + '"></span>' + lbl + ' ' + pct + '%</div>';
+  });
+
+  return new Chart(document.getElementById(canvasId), {
+    type: 'doughnut',
+    data: {
+      labels: labels,
+      datasets: [{
+        data: data,
+        backgroundColor: colors,
+        borderWidth: 0
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      cutout: '55%',
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: function(ctx) {
+              const pct = (ctx.parsed / totalRevenue12M * 100).toFixed(1);
+              return ' ' + fmtCurrency(ctx.parsed, mp) + ' (' + pct + '%)';
+            }
+          }
+        },
+        datalabels: { display: false }
+      }
+    }
+  });
+}
+
+function buildHHI(items, totalRevenue30D) {
+  if (totalRevenue30D === 0) return null;
+  let hhi = 0;
+  items.forEach(p => {
+    const share = (p.asinRevenue / totalRevenue30D) * 100;
+    hhi += share * share;
+  });
+  hhi = Math.round(hhi);
+
+  let color, interpretation;
+  if (hhi > 2500) { color = '#E24B4A'; interpretation = 'Highly concentrated'; }
+  else if (hhi > 1500) { color = '#BA7517'; interpretation = 'Moderately concentrated'; }
+  else { color = '#1D9E75'; interpretation = 'Competitive'; }
+
+  document.getElementById('mcHHILabel').innerHTML = 'HHI: ' + hhi.toLocaleString('en-US') + ' &mdash; ' + interpretation;
+
+  return new Chart(document.getElementById('mcHHI'), {
+    type: 'bar',
+    data: {
+      labels: ['HHI'],
+      datasets: [{
+        data: [hhi],
+        backgroundColor: [color],
+        borderRadius: 4,
+        borderSkipped: false
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: function(ctx) { return ' HHI: ' + ctx.parsed.x.toLocaleString('en-US'); }
+          }
+        },
+        datalabels: {
+          anchor: 'end',
+          align: 'end',
+          formatter: v => v.toLocaleString('en-US'),
+          font: { size: 11, weight: '600' },
+          color: '#1e293b'
+        }
+      },
+      scales: {
+        x: {
+          min: 0,
+          max: 10000,
+          grid: { color: '#e2e8f0' },
+          ticks: { font: { size: 10 }, callback: v => v.toLocaleString('en-US') }
+        },
+        y: { display: false }
+      }
+    }
+  });
+}
+
+function buildTable(items, totalRevenue30D, mp) {
+  const tbody = document.getElementById('mcTableBody');
+  const sym = mp === 'UK' ? '\u00A3' : '\u20AC';
+  let cum = 0;
+  let html = '';
+  items.forEach((p, i) => {
+    const rev12 = p.asinRevenue * 12;
+    const sales12 = p.asinSales * 12;
+    const share = totalRevenue30D > 0 ? (p.asinRevenue / totalRevenue30D * 100) : 0;
+    cum += share;
+    const rank = i + 1;
+
+    let borderStyle = '';
+    if (rank <= 3) borderStyle = 'border-left:3px solid #534AB7';
+    else if (rank <= 5) borderStyle = 'border-left:3px solid #1D9E75';
+    else if (rank <= 10) borderStyle = 'border-left:3px solid #BA7517';
+
+    html += '<tr>';
+    html += '<td style="' + borderStyle + '">' + rank + '</td>';
+    html += '<td style="font-family:monospace;font-size:.72rem">' + p.asin + '</td>';
+    html += '<td>' + (p.brand || '—') + '</td>';
+    html += '<td>' + (p.type || '—') + '</td>';
+    html += '<td class="num">' + sym + p.price.toFixed(2) + '</td>';
+    html += '<td class="num">' + fmtCurrency(rev12, mp) + '</td>';
+    html += '<td class="num">' + fmtNum(sales12) + '</td>';
+    html += '<td class="num">' + share.toFixed(1) + '%</td>';
+    html += '<td class="num">' + cum.toFixed(1) + '%</td>';
+    html += '</tr>';
+  });
+  tbody.innerHTML = html;
+}
+
+function renderConcentration() {
+  const mp = document.getElementById('mcMarketplace').value;
+  const seg = document.getElementById('mcSegment').value;
+
+  document.getElementById('mcLastUpdated').textContent = DATA_MARKET_CONCENTRATION.lastUpdated;
+
+  const items = getFiltered(mp, seg);
+  const totalRevenue30D = items.reduce((s, p) => s + p.asinRevenue, 0);
+  const totalRevenue12M = totalRevenue30D * 12;
+
+  // Summary cards
+  const top3rev = items.slice(0, 3).reduce((s, p) => s + p.asinRevenue, 0);
+  const top5rev = items.slice(0, 5).reduce((s, p) => s + p.asinRevenue, 0);
+  const top10rev = items.slice(0, 10).reduce((s, p) => s + p.asinRevenue, 0);
+
+  document.getElementById('mcTop3Pct').textContent = totalRevenue30D > 0 ? (top3rev / totalRevenue30D * 100).toFixed(1) + '%' : '—';
+  document.getElementById('mcTop5Pct').textContent = totalRevenue30D > 0 ? (top5rev / totalRevenue30D * 100).toFixed(1) + '%' : '—';
+  document.getElementById('mcTop10Pct').textContent = totalRevenue30D > 0 ? (top10rev / totalRevenue30D * 100).toFixed(1) + '%' : '—';
+
+  // Destroy existing charts
+  if (mcChartD3) { mcChartD3.destroy(); mcChartD3 = null; }
+  if (mcChartD5) { mcChartD5.destroy(); mcChartD5 = null; }
+  if (mcChartD10) { mcChartD10.destroy(); mcChartD10 = null; }
+  if (mcChartHHI) { mcChartHHI.destroy(); mcChartHHI = null; }
+
+  // Doughnuts
+  mcChartD3 = buildDoughnut('mcDoughnut3', 'mcLegend3', items, 3, totalRevenue12M, mp);
+  mcChartD5 = buildDoughnut('mcDoughnut5', 'mcLegend5', items, 5, totalRevenue12M, mp);
+  mcChartD10 = buildDoughnut('mcDoughnut10', 'mcLegend10', items, 10, totalRevenue12M, mp);
+
+  // HHI
+  mcChartHHI = buildHHI(items, totalRevenue30D);
+
+  // Table
+  buildTable(items, totalRevenue30D, mp);
+}
+
+document.getElementById('mcMarketplace').addEventListener('change', renderConcentration);
+document.getElementById('mcSegment').addEventListener('change', renderConcentration);
+
+// Initial render
+renderConcentration();
 </script>
 </body>
 </html>
